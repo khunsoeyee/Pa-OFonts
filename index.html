@@ -16,7 +16,7 @@
         }
 
         body {
-            /* ဒီနေရာမှာ နောက်ခံအလှပုံ (bg.jpg) ပေါ်မည်ဖြစ်သည် */
+            /* images/bg.jpg ဖိုင်လမ်းကြောင်း သေချာစေရန် */
             background-image: url('images/bg.jpg');
             background-size: cover;
             background-position: center;
@@ -30,7 +30,7 @@
             min-height: 100vh;
         }
 
-        /* Dark overlay for background clarity */
+        /* Dark overlay to enhance text clarity over bg.jpg */
         body::before {
             content: '';
             position: fixed;
@@ -110,14 +110,13 @@
             fill: currentColor;
         }
 
-        /* Preview Image Area (စာလုံးပုံ ရိုက်နှိပ်ထားသော ပုံများ) */
+        /* Preview Image Area */
         .preview-img {
             height: 45px;
             object-fit: contain;
             max-width: 100%;
         }
 
-        /* Responsive Settings for Mobile */
         @media (max-width: 480px) {
             .font-row {
                 padding: 8px 12px;
@@ -139,21 +138,19 @@
 
     <div class="font-container">
 
-        <!-- Font Row Sample -->
+        <!-- Font Row 1 -->
         <div class="font-row">
-            <!-- ၁။ ဒေါင်းလုဒ် ခလုတ် -->
-            <a href="fonts/font1.ttf" download class="download-btn">
+            <!-- font/font1.ttf သို့ ချိတ်ဆက်ထားသည် -->
+            <a href="font/font1.ttf" download class="download-btn">
                 <svg class="download-icon" viewBox="0 0 24 24">
                     <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
                 </svg>
                 ဒေါင်းလုဒ်
             </a>
 
-            <!-- ၂။ စာလုံးပုံ (ညာဘက်တွင် ပုံအဖြစ် ပြသခြင်း) -->
+            <!-- images/preview1.png သို့ ချိတ်ဆက်ထားသည် -->
             <img src="images/preview1.png" alt="Font Preview" class="preview-img">
         </div>
-
-        <!-- ဖောင့်များလာပါက အောက်ပါအတိုင်း <div class="font-row">...</div> ကို ကူးပြီး ထပ်တိုးသွားနိုင်ပါသည်။ -->
 
     </div>
 
