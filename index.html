@@ -16,7 +16,6 @@
         }
 
         body {
-            /* images/bg.jpg ဖိုင်လမ်းကြောင်း သေချာစေရန် */
             background-image: url('images/bg.jpg');
             background-size: cover;
             background-position: center;
@@ -30,7 +29,6 @@
             min-height: 100vh;
         }
 
-        /* Dark overlay to enhance text clarity over bg.jpg */
         body::before {
             content: '';
             position: fixed;
@@ -50,7 +48,6 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         }
 
-        /* Container for Font List */
         .font-container {
             display: flex;
             flex-direction: column;
@@ -59,10 +56,10 @@
             max-width: 850px;
         }
 
-        /* Single Line Font Row */
         .font-row {
             display: flex;
             align-items: center;
+            justify-content: space-between; /* ဘယ်ညာ ညီညီညာညာ ခွဲပေးသည် */
             gap: 15px;
             padding: 10px 18px;
             background: rgba(255, 255, 255, 0.08);
@@ -80,7 +77,6 @@
             transform: translateX(4px);
         }
 
-        /* Download Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -110,7 +106,6 @@
             fill: currentColor;
         }
 
-        /* Preview Image Area */
         .preview-img {
             height: 45px;
             object-fit: contain;
@@ -140,16 +135,16 @@
 
         <!-- Font Row 1 -->
         <div class="font-row">
-            <!-- font/font1.ttf သို့ ချိတ်ဆက်ထားသည် -->
+            <!-- ၁။ စာလုံးပုံ (ဘယ်ဘက်တွင်ထားသည်) -->
+            <img src="images/preview1.png" alt="Font Preview" class="preview-img">
+
+            <!-- ၂။ ဒေါင်းလုဒ် ခလုတ် (ညာဘက်သို့ ရွှေ့ထားသည်) -->
             <a href="font/font1.ttf" download class="download-btn">
                 <svg class="download-icon" viewBox="0 0 24 24">
                     <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
                 </svg>
                 ဒေါင်းလုဒ်
             </a>
-
-            <!-- images/preview1.png သို့ ချိတ်ဆက်ထားသည် -->
-            <img src="images/preview1.png" alt="Font Preview" class="preview-img">
         </div>
 
     </div>
