@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myanmar TTF Font Showcase</title>
-    <!-- Google Fonts (Zawgyi/Unicode Myanmar Font) -->
+    <title>Myanmar TTF Fonts Showcase</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
@@ -21,53 +22,52 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
         h1 {
             margin: 20px 0 30px;
-            font-size: 2rem;
+            font-size: 1.8rem;
             text-align: center;
             color: #38bdf8;
         }
 
-        /* Card Container */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        /* Font Card Item */
-        .font-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Container for Font List */
+        .font-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 220px;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Single Line Font Card */
+        .font-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-height: 160px; /* စာတစ်ကြောင်းစာ အနိမ့်အမြင့် */
             background-size: cover;
             background-position: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .font-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(56, 189, 248, 0.25);
         }
 
-        /* Dark Overlay for Background Visibility & Text Contrast */
+        /* Dark Overlay for Background Image Contrast */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
+            /* နောက်ခံပုံ ကောင်းကောင်းမြင်ရအောင် Transparent ဖြစ်စေမည့် Gradient */
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.45) 100%);
             z-index: 1;
         }
 
@@ -75,40 +75,38 @@
         .card-content {
             position: relative;
             z-index: 2;
-            padding: 24px;
+            padding: 20px 25px;
             display: flex;
-            flex-direction: column;
-            height: 100%;
+            align-items: center;
             justify-content: space-between;
+            gap: 20px;
+            height: 100%;
+            min-height: 160px;
+        }
+
+        .font-info {
+            flex: 1;
+            overflow: hidden;
         }
 
         .font-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #e2e8f0;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            font-weight: 700;
         }
 
-        /* Custom Font Preview Text Area */
+        /* Preview Text (Single Line) */
         .font-preview {
             font-size: 1.8rem;
-            line-height: 1.4;
             color: #ffffff;
-            margin: 15px 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
         }
 
-        /* Custom @font-face styling dynamically */
-        @font-face {
-            font-family: 'CustomFont1';
-            src: url('fonts/font1.ttf') format('truetype');
-        }
-
-        .font-style-1 {
-            font-family: 'CustomFont1', sans-serif;
-        }
-
-        /* Download Button Styling */
+        /* Download Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -117,16 +115,18 @@
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 12px 22px;
             border-radius: 8px;
             font-weight: bold;
             font-size: 0.95rem;
-            transition: background 0.3s ease;
-            width: fit-content;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
         }
 
         .download-btn:hover {
             background: linear-gradient(135deg, #38bdf8, #0284c7);
+            box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
         }
 
         .download-icon {
@@ -134,33 +134,76 @@
             height: 18px;
             fill: currentColor;
         }
+
+        /* Custom @font-face examples */
+        @font-face {
+            font-family: 'FontOne';
+            src: url('fonts/font1.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'FontTwo';
+            src: url('fonts/font2.ttf') format('truetype');
+        }
+
+        .font-style-1 { font-family: 'FontOne', sans-serif; }
+        .font-style-2 { font-family: 'FontTwo', sans-serif; }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 600px) {
+            .card-content {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            .download-btn {
+                width: 100%;
+            }
+            .font-preview {
+                font-size: 1.4rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Myanmar Free TTF Fonts</h1>
+    <h1>Myanmar TTF Fonts Download</h1>
 
-    <div class="card-grid">
+    <div class="font-list">
 
-        <!-- Card 1 -->
+        <!-- Font Item 1 -->
         <div class="font-card" style="background-image: url('images/bg1.jpg');">
             <div class="overlay"></div>
             <div class="card-content">
-                <div>
-                    <div class="font-title">၁။ ပြည်ထောင်စု ဖောင့် (Pyidaungsu)</div>
-                    <div class="font-preview font-style-1">မင်္ဂလာပါ ခွန်စိုးရီ</div>
+                <div class="font-info">
+                    <div class="font-title">၁။ Pyidaungsu Font</div>
+                    <div class="font-preview font-style-1">မင်္ဂလာပါ ခွန်စိုးရီ - စာလုံးနမူနာ</div>
                 </div>
-                <!-- Download Button -->
                 <a href="fonts/font1.ttf" download class="download-btn">
                     <svg class="download-icon" viewBox="0 0 24 24">
                         <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
                     </svg>
-                    ဒေါင်းလုဒ် ရယူရန်
+                    ဒေါင်းလုဒ်
                 </a>
             </div>
         </div>
 
-        <!-- ထပ်တိုးချင်ရင် Card တွေကို ဒီအတိုင်း ကူးပြီး သုံးနိုင်ပါတယ် -->
+        <!-- Font Item 2 -->
+        <div class="font-card" style="background-image: url('images/bg2.jpg');">
+            <div class="overlay"></div>
+            <div class="card-content">
+                <div class="font-info">
+                    <div class="font-title">၂။ Myanmar/Pa'O Unicode Font</div>
+                    <div class="font-preview font-style-2">ပအိုဝ်ႏလိတ်ဖြုံႏတရေꩻ</div>
+                </div>
+                <a href="fonts/font2.ttf" download class="download-btn">
+                    <svg class="download-icon" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                    </svg>
+                    ဒေါင်းလုဒ်
+                </a>
+            </div>
+        </div>
 
     </div>
 
