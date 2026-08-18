@@ -16,7 +16,7 @@
         }
 
         body {
-            /* နောက်ခံပုံ bg.jpg ကို Website တစ်ခုလုံးမှာ Fixed တပ်ဆင်ခြင်း */
+            /* ဒီနေရာမှာ နောက်ခံအလှပုံ (bg.jpg) ပေါ်မည်ဖြစ်သည် */
             background-image: url('images/bg.jpg');
             background-size: cover;
             background-position: center;
@@ -30,7 +30,7 @@
             min-height: 100vh;
         }
 
-        /* Dark overlay to make text and cards pop over bg.jpg */
+        /* Dark overlay for background clarity */
         body::before {
             content: '';
             position: fixed;
@@ -38,7 +38,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.65); /* နောက်ခံပုံ ပိုကြည်အောင် ၆၅% မှောင်ပေးထားပါသည် */
+            background: rgba(15, 23, 42, 0.65);
             z-index: -1;
         }
 
@@ -59,13 +59,13 @@
             max-width: 850px;
         }
 
-        /* Single Line Font Item Row (Glassmorphism design) */
+        /* Single Line Font Row */
         .font-row {
             display: flex;
             align-items: center;
             gap: 15px;
             padding: 10px 18px;
-            background: rgba(255, 255, 255, 0.08); /* မှန်ကြည်ဒီဇိုင်း */
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -80,7 +80,7 @@
             transform: translateX(4px);
         }
 
-        /* Download Button at the FRONT (Left Side) */
+        /* Download Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -96,7 +96,7 @@
             white-space: nowrap;
             transition: all 0.2s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0; /* ခလုတ် ဆိုဒ်မသေးသွားစေရန် */
+            flex-shrink: 0;
         }
 
         .download-btn:hover {
@@ -110,32 +110,12 @@
             fill: currentColor;
         }
 
-        /* Preview Text Area (Right Side) */
-        .font-preview {
-            flex: 1;
-            font-size: 1.8rem;
-            color: #ffffff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            line-height: 1.3;
+        /* Preview Image Area (စာလုံးပုံ ရိုက်နှိပ်ထားသော ပုံများ) */
+        .preview-img {
+            height: 45px;
+            object-fit: contain;
+            max-width: 100%;
         }
-
-        /* Custom Fonts Settings */
-        @font-face {
-            font-family: 'FontOne';
-            src: url('fonts/font1.ttf') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'FontTwo';
-            src: url('fonts/font2.ttf') format('truetype');
-        }
-
-        /* Font styles application */
-        .font-style-1 { font-family: 'FontOne', sans-serif; }
-        .font-style-2 { font-family: 'FontTwo', sans-serif; }
 
         /* Responsive Settings for Mobile */
         @media (max-width: 480px) {
@@ -147,8 +127,8 @@
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
-            .font-preview {
-                font-size: 1.3rem;
+            .preview-img {
+                height: 35px;
             }
         }
     </style>
@@ -159,9 +139,9 @@
 
     <div class="font-container">
 
-        <!-- ဖောင့် ၁ ခုချင်းစီအတွက် Row -->
+        <!-- Font Row Sample -->
         <div class="font-row">
-            <!-- ၁။ Download Button (ရှေ့တွင်ထားသည်) -->
+            <!-- ၁။ ဒေါင်းလုဒ် ခလုတ် -->
             <a href="fonts/font1.ttf" download class="download-btn">
                 <svg class="download-icon" viewBox="0 0 24 24">
                     <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
@@ -169,22 +149,11 @@
                 ဒေါင်းလုဒ်
             </a>
 
-            <!-- ၂။ ဖောင့်နမူနာ စာကြောင်း (ညာဘက်တွင်ထားသည်) -->
-            <div class="font-preview font-style-1">ပအိုဝ်ႏလိတ်ဖြုံႏတရေꩻ</div>
+            <!-- ၂။ စာလုံးပုံ (ညာဘက်တွင် ပုံအဖြစ် ပြသခြင်း) -->
+            <img src="images/preview1.png" alt="Font Preview" class="preview-img">
         </div>
 
-        <!-- ဖောင့် ၂ -->
-        <div class="font-row">
-            <a href="fonts/font2.ttf" download class="download-btn">
-                <svg class="download-icon" viewBox="0 0 24 24">
-                    <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-                </svg>
-                ဒေါင်းလုဒ်
-            </a>
-            <div class="font-preview font-style-2">ပအိုဝ်ႏလိတ်ဖြုံႏတရေꩻ</div>
-        </div>
-
-        <!-- ဖောင့်များလာပါက ဒီအတိုင်း <div class="font-row">...</div> ကို ကူးပြီး ထပ်တိုးသွားရုံပါပဲ -->
+        <!-- ဖောင့်များလာပါက အောက်ပါအတိုင်း <div class="font-row">...</div> ကို ကူးပြီး ထပ်တိုးသွားနိုင်ပါသည်။ -->
 
     </div>
 
