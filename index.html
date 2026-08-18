@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myanmar TTF Font Showcase</title>
+    <!-- Google Fonts (Zawgyi/Unicode Myanmar Font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Padauk', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 20px 0 30px;
+            font-size: 2rem;
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        /* Card Container */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        /* Font Card Item */
+        .font-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        /* Dark Overlay for Background Visibility & Text Contrast */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
+            z-index: 1;
+        }
+
+        /* Card Content Layer */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+        .font-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        /* Custom Font Preview Text Area */
+        .font-preview {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: #ffffff;
+            margin: 15px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Custom @font-face styling dynamically */
+        @font-face {
+            font-family: 'CustomFont1';
+            src: url('fonts/font1.ttf') format('truetype');
+        }
+
+        .font-style-1 {
+            font-family: 'CustomFont1', sans-serif;
+        }
+
+        /* Download Button Styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+            width: fit-content;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+        }
+
+        .download-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Myanmar Free TTF Fonts</h1>
+
+    <div class="card-grid">
+
+        <!-- Card 1 -->
+        <div class="font-card" style="background-image: url('images/bg1.jpg');">
+            <div class="overlay"></div>
+            <div class="card-content">
+                <div>
+                    <div class="font-title">၁။ ပြည်ထောင်စု ဖောင့် (Pyidaungsu)</div>
+                    <div class="font-preview font-style-1">မင်္ဂလာပါ ခွန်စိုးရီ</div>
+                </div>
+                <!-- Download Button -->
+                <a href="fonts/font1.ttf" download class="download-btn">
+                    <svg class="download-icon" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                    </svg>
+                    ဒေါင်းလုဒ် ရယူရန်
+                </a>
+            </div>
+        </div>
+
+        <!-- ထပ်တိုးချင်ရင် Card တွေကို ဒီအတိုင်း ကူးပြီး သုံးနိုင်ပါတယ် -->
+
+    </div>
+
+</body>
+</html>
