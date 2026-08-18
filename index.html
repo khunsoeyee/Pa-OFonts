@@ -22,7 +22,7 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #ffffff;
-            padding: 30px 15px;
+            padding: 20px 15px 90px; /* အောက်ခြေ Navbar အတွက် Space ပိုပေးထားပါသည် */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,7 +41,7 @@
         }
 
         h1 {
-            margin-bottom: 25px;
+            margin: 10px 0 25px;
             font-size: 1.8rem;
             text-align: center;
             color: #38bdf8;
@@ -59,7 +59,7 @@
         .font-row {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* ဘယ်ညာ ညီညီညာညာ ခွဲပေးသည် */
+            justify-content: space-between;
             gap: 15px;
             padding: 10px 18px;
             background: rgba(255, 255, 255, 0.08);
@@ -112,6 +112,128 @@
             max-width: 100%;
         }
 
+        /* Bottom Fixed Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-btn:hover, .nav-btn:active {
+            color: #38bdf8;
+        }
+
+        .nav-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Modal Overlay & Animation Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 200;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.7) translateY(30px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-card p {
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+
+        .close-btn {
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #38bdf8;
+        }
+
+        /* Toast Animation for Share Link Copy */
+        .toast {
+            position: fixed;
+            top: 20px;
+            background: rgba(56, 189, 248, 0.95);
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-80px);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 300;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
         @media (max-width: 480px) {
             .font-row {
                 padding: 8px 12px;
@@ -131,23 +253,91 @@
 
     <h1>Myanmar Free TTF Fonts</h1>
 
-    <div class="font-container">
+    <!-- Font List Container -->
+    <div class="font-container" id="fontContainer"></div>
 
-        <!-- Font Row 1 -->
-        <div class="font-row">
-            <!-- ၁။ စာလုံးပုံ (ဘယ်ဘက်တွင်ထားသည်) -->
-            <img src="images/preview1.png" alt="Font Preview" class="preview-img">
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <!-- About Us Button -->
+        <button class="nav-btn" onclick="openAbout()">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            About us
+        </button>
 
-            <!-- ၂။ ဒေါင်းလုဒ် ခလုတ် (ညာဘက်သို့ ရွှေ့ထားသည်) -->
-            <a href="font/font1.ttf" download class="download-btn">
-                <svg class="download-icon" viewBox="0 0 24 24">
-                    <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-                </svg>
-                ဒေါင်းလုဒ်
-            </a>
-        </div>
+        <!-- Blog Link Button -->
+        <a href="https://khunsoeyee.blogspot.com" target="_blank" class="nav-btn">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+            Blog
+        </a>
 
+        <!-- Share Button -->
+        <button class="nav-btn" onclick="shareWebsite()">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+            Share
+        </button>
     </div>
 
+    <!-- Animated About Us Modal -->
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-card">
+            <p>Capcut , inshot အတာႏ လိတ်ဖြုံႏတရေꩻယို
+ဒေါင်းထူႏ ယံဖေႏနေးကယိုꩻတာႏ
+ဖန်ဆင်ꩻခါꩻဗာႏ Webapp ယိုဗာႏသွူဩ။
+
+ကဖန်ဆင်ꩻခါꩻဒါႏ font ဆရာႏဖုံႏတဲ့
+ခွေသွဉ်း သꩻရေꩻထူႏဂွုဏ်ႏ ငါႏသွူဩ</p>
+            <button class="close-btn" onclick="closeAbout()">ပိတ်မည်</button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">Link ကူးယူပြီးပါပြီ!</div>
+
+    <script>
+        // ၁ မှ ၄၀ ထိ Font List များကို Automatic ထုတ်ပေးသည့် Script
+        const container = document.getElementById('fontContainer');
+        const totalFonts = 40;
+
+        for (let i = 1; i <= totalFonts; i++) {
+            const fontRow = document.createElement('div');
+            fontRow.className = 'font-row';
+            fontRow.innerHTML = `
+                <img src="images/preview${i}.png" alt="Font Preview ${i}" class="preview-img" onerror="this.parentElement.style.display='none'">
+                <a href="font/font${i}.ttf" download class="download-btn">
+                    <svg class="download-icon" viewBox="0 0 24 24">
+                        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                    </svg>
+                    ဒေါင်းလုဒ်
+                </a>
+            `;
+            container.appendChild(fontRow);
+        }
+
+        // Modal Controls
+        function openAbout() {
+            document.getElementById('aboutModal').classList.add('active');
+        }
+
+        function closeAbout() {
+            document.getElementById('aboutModal').classList.remove('active');
+        }
+
+        // Share Functionality (Domain မပါဘဲ Copy ကူးပြီး Animation ပြသခြင်း)
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Myanmar TTF Fonts',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>
